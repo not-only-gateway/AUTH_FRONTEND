@@ -27,10 +27,27 @@ export const KEYS = {
         {key: 'unitary_value', type: 'number', label: 'Valor unitário', visible: false},
     ],
 
-    SIMPLE: [
+    PRIVILEGE: [
         {key: 'id', type: 'number', label: 'ID', visible: false},
-        {key: 'description', type: 'number', label: 'Descrição', visible: true},
+        {key: 'denomination', type: 'string', label: 'Denominação', visible: true},
+        {key: 'description', type: 'string', label: 'Descrição', visible: true},
     ],
-    ENDPOINT: []
+    ENDPOINT: [
+        {key: 'url', type: 'string', label: 'URL', visible: true},
+        {key: 'require_auth', type: 'bool', label: 'Requer autenticação', visible: true},
+        {key: 'denomination', type: 'string', label: 'Denominação', visible: true},
+        {key: 'description', type: 'string', label: 'Descrição', visible: true},
+
+    ],
+    ENDPOINT_PRIVILEGE: [
+        {label: 'Método', key: 'method', type: 'string', visible: true},
+        {label: 'Endpoint', key: 'endpoint', type: 'object', visible: true, subfieldKey: 'url', subType: 'string'},
+        {label: 'Privilégio', key: 'privilege', type: 'object', visible: true, subfieldKey: 'denomination', subType: 'string'},
+    ],
+    USER_PRIVILEGE: [
+        {label: 'Usuário', key: 'user', type: 'object', visible: true, subfieldKey: 'name', subType: 'string'},
+        {label: 'Usuário Email', key: 'user', type: 'object', visible: true, subfieldKey: 'user_email', subType: 'string'},
+        {label: 'Privilégio', key: 'privilege', type: 'object', visible: true, subfieldKey: 'denomination', subType: 'string'}
+    ]
 
 }

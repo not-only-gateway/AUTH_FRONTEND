@@ -1,15 +1,15 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Switcher} from "@f-ui/core";
-import useQuery from "../../ext/visualization/hooks/useQuery";
-import getQuery from "../../utils/getQuery";
+import useQuery from "../../ext/hooks/useQuery";
+import getQuery from "../../ext/getQuery";
 import styles from "../../styles/Home.module.css";
-import List from "../../ext/visualization/list/List";
+import List from "../../ext/list/List";
 import {KEYS} from "../../templates/KEYS";
 import FormTemplate from "../../ext/FormTemplate";
 import page from "../../public/page.json";
-import useRequest from "../../ext/useRequest";
-import {ENDPOINT} from "../../templates/forms/ENDPOINT";
+import useRequest from "../../ext/hooks/useRequest";
+import {ENDPOINT} from "../../templates/FORMS";
 
 export default function EndpointList(props) {
     const [current, setCurrent] = useState()
@@ -43,7 +43,6 @@ export default function EndpointList(props) {
 
                     icon: <span className={'material-icons-round'}>delete_forever</span>,
                     onClick: (e) => {
-                        console.log(e)
                         make({
                             url: page.host + '/api/endpoint/' + e.id,
                             method: 'delete'
@@ -56,7 +55,7 @@ export default function EndpointList(props) {
                 createOption={true}
                 onCreate={() => setCurrent({})}
                 keys={KEYS.ENDPOINT}
-                onRowClick={e => setCurrent(e)}
+                onRowClick={e => props.redirect(`endpoint?id=${e.id}`)}
                 title={'Endpoints'}
          />
         </Switcher>)
@@ -64,7 +63,5 @@ export default function EndpointList(props) {
 }
 
 EndpointList.propTypes = {
-    handleClose: PropTypes.func,
-    create: PropTypes.bool,
-    data: PropTypes.object
+    redirect: PropTypes.func
 }

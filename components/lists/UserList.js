@@ -1,21 +1,20 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Switcher} from "@f-ui/core";
-import useQuery from "../../ext/visualization/hooks/useQuery";
-import getQuery from "../../utils/getQuery";
+import useQuery from "../../ext/hooks/useQuery";
+import getQuery from "../../ext/getQuery";
 import {KEYS} from "../../templates/KEYS";
 import styles from "../../styles/Home.module.css";
-import List from "../../ext/visualization/list/List";
+import List from "../../ext/list/List";
 
 export default function UserList(props) {
-    const [current, setCurrent] = useState()
-    const hook = useQuery(getQuery('unit'))
+    const hook = useQuery(getQuery('user'))
     return (
 
             <List
                 hook={hook}
                 keys={KEYS.USER}
-                onRowClick={e => setCurrent(e)}
+                onRowClick={e => props.redirect(`user?id=${e.id}`)}
                 title={'Usuários'}
             />
         )
@@ -23,7 +22,5 @@ export default function UserList(props) {
 }
 
 UserList.propTypes = {
-    handleClose: PropTypes.func,
-    create: PropTypes.bool,
-    data: PropTypes.object
+    redirect: PropTypes.func
 }

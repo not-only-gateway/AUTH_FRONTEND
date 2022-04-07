@@ -1,20 +1,20 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import {Switcher} from "@f-ui/core";
-import useQuery from "../../ext/visualization/hooks/useQuery";
-import getQuery from "../../utils/getQuery";
+import useQuery from "../../ext/hooks/useQuery";
+import getQuery from "../../ext/getQuery";
 import {KEYS} from "../../templates/KEYS";
 import styles from "../../styles/Home.module.css";
 
-import List from "../../ext/visualization/list/List";
+import List from "../../ext/list/List";
 import FormTemplate from "../../ext/FormTemplate";
-import {AD} from "../../templates/forms/AD";
 import page from "../../public/page.json";
-import useRequest from "../../ext/useRequest";
+import useRequest from "../../ext/hooks/useRequest";
+import {AD} from "../../templates/FORMS";
 
 export default function ADList(props) {
     const [current, setCurrent] = useState()
-    const hook = useQuery(getQuery('collaborator'))
+    const hook = useQuery(getQuery('active_directory'))
     const {make} = useRequest(true)
     return (
         <Switcher openChild={current ? 0 : 1} className={styles.wrapper}>
@@ -25,7 +25,7 @@ export default function ADList(props) {
                 obj={AD}
                 submit={(data) => {
                     make({
-                        url: page.host + '/api/collaborator' + (Object.keys(current).length === 0 ? '' : '/' + props.data.id),
+                        url: page.host + '/api/active_directory' + (Object.keys(current).length === 0 ? '' : '/' + props.data.id),
                         method: Object.keys(current).length === 0 ? 'POST' : 'PUT',
                         data: {
                             ...data,
@@ -43,9 +43,9 @@ export default function ADList(props) {
 
                     icon: <span className={'material-icons-round'}>delete_forever</span>,
                     onClick: (e) => {
-                        console.log(e)
+
                         make({
-                            url: page.host + '/api/collaborator/' + e.id,
+                            url: page.host + '/api/active_directory/' + e.id,
                             method: 'delete'
                         })
                             .then(() => hook.clean())
@@ -64,7 +64,5 @@ export default function ADList(props) {
 }
 
 ADList.propTypes = {
-    handleClose: PropTypes.func,
-    create: PropTypes.bool,
-    data: PropTypes.object
+    redirect: PropTypes.func
 }
