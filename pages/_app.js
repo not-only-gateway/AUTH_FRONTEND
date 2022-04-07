@@ -1,19 +1,17 @@
 import '../styles/globals.css'
-import {useEffect, useState} from "react";
-import {Button, Fabric, Navigation, NavigationGroup} from "@f-ui/core";
-import styles from '../styles/Home.module.css'
-import {useRouter} from "next/router";
-import NavigationTemplate from "../ext/NavigationTemplate";
+import page from '../public/page.json'
+import Wrapper from "../ext/wrapper/Wrapper";
 
 function MyApp({Component, pageProps}) {
 
 
     return (
-        <NavigationTemplate
-            pages={[{label: 'Início', path: '/',}]}
+        <Wrapper
+            host={page.host}
+            pages={[{label: 'Início', path: '/', requireAuth: true}]}
         >
             <Component {...pageProps}/>
-        </NavigationTemplate>
+        </Wrapper>
     )
 }
 

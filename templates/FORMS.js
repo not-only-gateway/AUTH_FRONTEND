@@ -72,7 +72,7 @@ export const AD = [
                 required: true,
                 disabled: false,
                 key: 'attr',
-                type: 'string',
+                type: 'text',
                 width: '100%'
             }
 

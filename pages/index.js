@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
-import {Tab, VerticalTabs} from "@f-ui/core";
+import {Tab, VerticalTabs, DataRow} from "@f-ui/core";
+
 import styles from '../styles/Home.module.css'
 import ADList from "../components/lists/ADList";
 
@@ -15,13 +16,14 @@ export default function Home() {
     const router = useRouter()
     return (
         <VerticalTabs open={open} setOpen={setOpen} className={styles.tabs}>
-            <Tab label={'Servidores AD'}  className={styles.tab}>
+            <Tab label={'Servidores AD'} className={styles.tab}>
                 <ADList/>
+
             </Tab>
             <Tab label={'Usuários'} className={styles.tab}>
                 <UserList redirect={router.push}/>
             </Tab>
-            <Tab label={'Privilégios'}  group={'Acesso'} className={styles.tab}>
+            <Tab label={'Privilégios'} group={'Acesso'} className={styles.tab}>
                 <PrivilegeList/>
             </Tab>
 
