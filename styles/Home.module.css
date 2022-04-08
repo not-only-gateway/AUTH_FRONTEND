@@ -86,7 +86,8 @@ width: 100%;
 }
 
 .tabs{
-    padding: 0 10%;
+
+    padding: 4px 10% 0;
     display: flex;
     gap: 8px;
 }

@@ -27,10 +27,7 @@ export default function ADList(props) {
                     make({
                         url: page.host + '/api/active_directory' + (Object.keys(current).length === 0 ? '' : '/' + props.data.id),
                         method: Object.keys(current).length === 0 ? 'POST' : 'PUT',
-                        data: {
-                            ...data,
-                            id: data.id.replaceAll('.', '').replaceAll('-', '')
-                        }
+                        data: data
                     }).catch()
                 }}
             />

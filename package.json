@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@f-ui/charts": "^0.0.1-alpha",
-    "@f-ui/core": "^0.1.29-alpha",
+    "@f-ui/core": "^0.1.31-alpha",
     "axios": "^0.26.1",
     "next": "12.1.0",
     "react": "17.0.2",
